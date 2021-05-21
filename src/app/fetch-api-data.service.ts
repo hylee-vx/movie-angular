@@ -80,7 +80,7 @@ export class GetUserService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // non-typed response extraction
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -104,10 +104,10 @@ export class GetUserService {
 export class EditUserService {
   constructor(private http: HttpClient) { }
 
-  public editUser(): Observable<any> {
+  public editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + 'users/:ID', {
+      .put(apiUrl + 'users/:ID', userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -115,7 +115,7 @@ export class EditUserService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -139,10 +139,10 @@ export class EditUserService {
 export class editUserPasswordService {
   constructor(private http: HttpClient) { }
 
-  public editUserPassword(): Observable<any> {
+  public editUserPassword(userPassword: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + 'users/:ID/password', {
+      .put(apiUrl + 'users/:ID/password', userPassword, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -150,7 +150,7 @@ export class editUserPasswordService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -174,10 +174,10 @@ export class editUserPasswordService {
 export class AddFavouriteMovieService {
   constructor(private http: HttpClient) { }
 
-  public addFavouriteMovie(): Observable<any> {
+  public addFavouriteMovie(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + 'users/:ID/movies/:movieID', {
+      .post(apiUrl + 'users/:ID/movies/:movieID', userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -185,7 +185,7 @@ export class AddFavouriteMovieService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -209,10 +209,10 @@ export class AddFavouriteMovieService {
 export class DeleteFavouriteMovieService {
   constructor(private http: HttpClient) { }
 
-  public deleteFavouriteMovie(): Observable<any> {
+  public deleteFavouriteMovie(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + 'users/:ID/movies/:movieID', {
+      .put(apiUrl + 'users/:ID/movies/:movieID', userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -220,7 +220,7 @@ export class DeleteFavouriteMovieService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -255,7 +255,7 @@ export class DeleteUserService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -291,7 +291,7 @@ export class GetAllMoviesService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // non-typed response extraction
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -326,7 +326,7 @@ export class GetMovieService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -361,7 +361,7 @@ export class GetDirectorService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -396,7 +396,7 @@ export class GetActorService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
@@ -431,7 +431,7 @@ export class GetGenreService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response | Object): Response | Object {
+  private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
     return body || {};
   }
