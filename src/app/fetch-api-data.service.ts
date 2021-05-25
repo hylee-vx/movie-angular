@@ -71,8 +71,9 @@ export class GetUserService {
 
   public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     return this.http
-      .get(apiUrl + 'users/:ID', {
+      .get(`${apiUrl}users/${user}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -82,6 +83,7 @@ export class GetUserService {
   // non-typed response extraction
   private extractResponseData(res: Response | {}): Response | {} {
     const body = res;
+    console.log(body);
     return body || {};
   }
 
@@ -106,8 +108,9 @@ export class EditUserService {
 
   public editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     return this.http
-      .put(apiUrl + 'users/:ID', userDetails, {
+      .put(`${apiUrl}users/${user}`, userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -136,13 +139,14 @@ export class EditUserService {
 @Injectable({
   providedIn: 'root'
 })
-export class editUserPasswordService {
+export class EditUserPasswordService {
   constructor(private http: HttpClient) { }
 
   public editUserPassword(userPassword: any): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     return this.http
-      .put(apiUrl + 'users/:ID/password', userPassword, {
+      .put(`${apiUrl}users/${user}/password`, userPassword, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })

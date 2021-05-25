@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Profile</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form>
+            <mat-form-field>
+                Username: {{user.Username}}
+            </mat-form-field>
+            <mat-form-field>
+                Email: {{user.Email}}
+            </mat-form-field>
+            <mat-form-field>
+                Date of Birth: {{ user.DateOfBirth | date: 'dd/mm/yyyy'}}
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button (click)="openUserProfileEditDialog()" color="primary">
+            Update profile
+        </button>
+
+        <button mat-raised-button (click)="openUserPasswordEditDialog()" color="primary">
+            Update password
+        </button>
+    </mat-card-actions>
+</mat-card>
