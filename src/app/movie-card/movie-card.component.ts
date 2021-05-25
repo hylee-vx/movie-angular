@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GetAllMoviesService } from '../fetch-api-data.service';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
+import { MovieDirectorsComponent } from '../movie-directors/movie-directors.component';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
   movies: any[] = [];
 
   constructor(
@@ -36,6 +37,12 @@ export class MovieCardComponent {
     this.dialog.open(MovieDetailsComponent, {
       data: { Title, ReleaseYear, Description },
     });
+  }
+
+  openDirectorsDialog(Name: string): void {
+    this.dialog.open(MovieDirectorsComponent, {
+      data: { Name },
+    })
   }
 
   openGenreDialog(Name: string, Description: string): void {

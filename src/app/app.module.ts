@@ -20,6 +20,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
+import { MovieDirectorsComponent } from './movie-directors/movie-directors.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     MovieDetailsComponent,
     MovieGenreComponent,
+    MovieDirectorsComponent,
   ],
   imports: [
     BrowserModule,

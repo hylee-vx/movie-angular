@@ -292,6 +292,7 @@ export class GetAllMoviesService {
   }
   // non-typed response extraction
   private extractResponseData(res: Response | {}): Response | {} {
+    console.log(res);
     const body = res;
     return body || {};
   }
@@ -344,13 +345,37 @@ export class GetMovieService {
 }
 
 // gets director data
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class GetDirectorsService {
+//   constructor(private http: HttpClient) { }
+
+//   public getDirectors(): Observable<Object> {
+//     const token = localStorage.getItem('token');
+//     return this.http
+//       .get(apiUrl + 'movies/:Title', {
+//         headers: new HttpHeaders({
+//           Authorization: 'Bearer ' + token,
+//         })
+//       })
+//       .pipe(map((response) => {
+//         console.log(response);
+//         const transformedData = Object.entries(response);
+//         return transformedData;
+//       }));
+
+//   }
+
+// }
+
 @Injectable({
   providedIn: 'root'
 })
-export class GetDirectorService {
+export class GetDirectorsService {
   constructor(private http: HttpClient) { }
 
-  public getDirector(): Observable<any> {
+  public getDirectors(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'movies/directors/:name', {
@@ -382,10 +407,10 @@ export class GetDirectorService {
 @Injectable({
   providedIn: 'root'
 })
-export class GetActorService {
+export class GetActorsService {
   constructor(private http: HttpClient) { }
 
-  public getActor(): Observable<any> {
+  public getActors(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'movies/actors/:name', {
