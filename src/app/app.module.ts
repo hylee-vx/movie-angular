@@ -27,6 +27,7 @@ import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.
 import { UserPasswordEditComponent } from './user-password-edit/user-password-edit.component';
 import { MovieActorsComponent } from './movie-actors/movie-actors.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserProfileDeleteComponent } from './user-profile-delete/user-profile-delete.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     UserPasswordEditComponent,
     MovieActorsComponent,
     NavbarComponent,
+    UserProfileDeleteComponent,
   ],
   imports: [
     BrowserModule,

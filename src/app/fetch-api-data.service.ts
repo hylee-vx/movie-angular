@@ -252,8 +252,9 @@ export class DeleteUserService {
 
   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     return this.http
-      .delete(apiUrl + 'users/:ID/delete', {
+      .delete(`${apiUrl}users/${user}/delete`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })

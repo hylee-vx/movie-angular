@@ -1,5 +1,11 @@
 <div>
-    <h1>{{data.Title}}</h1>
-    <h3>{{data.ReleaseYear | date: 'yyyy'}}</h3>
-    <p>{{data.Description}}</p>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{data.Title}}</mat-card-title>
+            <mat-card-subtitle>{{data.ReleaseYear | date: 'yyyy'}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{data.Description}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

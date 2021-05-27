@@ -9,7 +9,8 @@
 
                 <ng-template #unselected>
                     <div>
-                        <mat-icon (click)="addFavourite(movie._id)" style="float: right; color: #d81622;">
+                        <mat-icon (click)="addFavourite(movie._id)"
+                            style="position: absolute; top: 14px; right: 14px; color: #d81622;">
                             favorite_border
                         </mat-icon>
                     </div>
@@ -17,7 +18,8 @@
 
                 <ng-template #selected>
                     <div>
-                        <mat-icon (click)="deleteFavourite(movie._id)" style="float: right; color: #d81622;">
+                        <mat-icon (click)="deleteFavourite(movie._id)"
+                            style="position: absolute; top: 14px; right: 14px; color: #d81622;">
                             favorite
                         </mat-icon>
                     </div>

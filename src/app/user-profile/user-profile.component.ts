@@ -4,14 +4,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
   GetUserService,
-  EditUserService,
-  EditUserPasswordService,
   GetAllMoviesService,
   DeleteFavouriteMovieService,
   DeleteUserService,
 } from '../fetch-api-data.service';
 import { UserProfileEditComponent } from '../user-profile-edit/user-profile-edit.component';
 import { UserPasswordEditComponent } from '../user-password-edit/user-password-edit.component';
+import { UserProfileDeleteComponent } from '../user-profile-delete/user-profile-delete.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,27 +20,51 @@ import { UserPasswordEditComponent } from '../user-password-edit/user-password-e
 export class UserProfileComponent implements OnInit {
   user: any = {};
   movies: any = [];
-  favourites: any = [];
+  favouriteMovies: any = [];
 
 
   constructor(
     public fetchApiData: GetUserService,
-    public fetchApiData2: EditUserService,
-    public fetchApiData3: EditUserPasswordService,
-    public fetchApiData4: GetAllMoviesService,
-    public fetchApiData5: DeleteFavouriteMovieService,
-    public fetchApiData6: DeleteUserService,
+    public fetchApiData2: GetAllMoviesService,
+    public fetchApiData3: DeleteFavouriteMovieService,
+    public fetchApiData4: DeleteUserService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
+    this.getMovies();
+  }
+
+  getMovies(): void {
+    this.fetchApiData2.getAllMovies().subscribe((response: any) => {
+      this.movies = response;
+      return this.movies;
+    });
     this.getUser();
   }
 
   getUser(): void {
     this.fetchApiData.getUser().subscribe((response: any) => {
       this.user = response;
+      let favMoviesUnsorted: any = [];
+      this.movies.forEach((movie: any) => {
+        if (this.user.FavouriteMovies.includes(movie._id)) {
+          favMoviesUnsorted.push(movie);
+          this.favouriteMovies = new Set(favMoviesUnsorted);
+        }
+        return this.favouriteMovies;
+      });
+      console.log(this.user);
+      console.log(this.favouriteMovies);
+      return this.user, this.favouriteMovies;
+    });
+  }
+
+  deleteFavourite(id: string): void {
+    this.fetchApiData3.deleteFavouriteMovie(id).subscribe((response: any) => {
+      console.log(response);
+      this.getUser();
     });
   }
 
@@ -54,6 +77,12 @@ export class UserProfileComponent implements OnInit {
   openUserPasswordEditDialog(): void {
     this.dialog.open(UserPasswordEditComponent, {
       width: '280px',
+    });
+  }
+
+  openUserProfileDeleteDialog(): void {
+    this.dialog.open(UserProfileDeleteComponent, {
+      width: '350px',
     });
   }
 
