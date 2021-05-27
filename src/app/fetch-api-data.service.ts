@@ -178,10 +178,11 @@ export class EditUserPasswordService {
 export class AddFavouriteMovieService {
   constructor(private http: HttpClient) { }
 
-  public addFavouriteMovie(userDetails: any): Observable<any> {
+  public addFavouriteMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     return this.http
-      .post(apiUrl + 'users/:ID/movies/:movieID', userDetails, {
+      .post(`${apiUrl}users/${user}/movies/${id}`, id, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -213,10 +214,11 @@ export class AddFavouriteMovieService {
 export class DeleteFavouriteMovieService {
   constructor(private http: HttpClient) { }
 
-  public deleteFavouriteMovie(userDetails: any): Observable<any> {
+  public deleteFavouriteMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     return this.http
-      .put(apiUrl + 'users/:ID/movies/:movieID', userDetails, {
+      .put(`${apiUrl}users/${user}/movies/${id}`, id, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -347,31 +349,6 @@ export class GetMovieService {
     return throwError('Something bad happened; please try again later');
   }
 }
-
-// gets director data
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class GetDirectorsService {
-//   constructor(private http: HttpClient) { }
-
-//   public getDirectors(): Observable<Object> {
-//     const token = localStorage.getItem('token');
-//     return this.http
-//       .get(apiUrl + 'movies/:Title', {
-//         headers: new HttpHeaders({
-//           Authorization: 'Bearer ' + token,
-//         })
-//       })
-//       .pipe(map((response) => {
-//         console.log(response);
-//         const transformedData = Object.entries(response);
-//         return transformedData;
-//       }));
-
-//   }
-
-// }
 
 @Injectable({
   providedIn: 'root'

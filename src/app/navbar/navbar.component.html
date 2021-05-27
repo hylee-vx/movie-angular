@@ -1,0 +1,13 @@
+<mat-toolbar style="position: sticky; width: 100%; background-color: #f6a291;">
+    <span routerLink="/movies">
+        myMusicalFlix
+    </span>
+    <span style="flex: 1 1 auto;">
+        <button mat-button routerLink="/profile" style="float: right;">
+            Profile
+        </button>
+        <button mat-button (click)="logoutUser()" routerLink="/" style="float: right;">
+            Sign Out
+        </button>
+    </span>
+</mat-toolbar>

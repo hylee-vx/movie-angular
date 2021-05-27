@@ -1,0 +1,15 @@
+<div style="display: flex">
+    <mat-card *ngFor="let Actor of data.Actors;">
+        <mat-card-header>
+            <mat-card-title>{{Actor.Name}}</mat-card-title>
+            <img mat-card-avatar src={{Actor.ImagePath}} alt={{Actor.ImagePath}} />
+            <mat-card-subtitle>
+                {{Actor.BirthYear | date: 'yyyy'}} - {{Actor.DeathYear | date: 'yyyy'}}
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p>{{Actor.Bio}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

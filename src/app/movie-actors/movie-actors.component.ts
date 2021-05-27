@@ -2,16 +2,16 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-movie-directors',
-  templateUrl: './movie-directors.component.html',
-  styleUrls: ['./movie-directors.component.scss']
+  selector: 'app-movie-actors',
+  templateUrl: './movie-actors.component.html',
+  styleUrls: ['./movie-actors.component.scss']
 })
-export class MovieDirectorsComponent {
+export class MovieActorsComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      Directors: Array<{
+      Actors: Array<{
         Name: string,
         BirthYear: string,
         DeathYear: string,

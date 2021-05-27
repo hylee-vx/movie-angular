@@ -1,12 +1,13 @@
 <div style="display: flex">
-    <mat-card>
+    <mat-card *ngFor="let Director of data.Directors;">
         <mat-card-header>
-            <mat-card-title>{{data.Name}}</mat-card-title>
-            <!-- <mat-card-subtitle>
-                {{data.Director.BirthYear | date: 'yyyy'}}
-            </mat-card-subtitle> -->
+            <mat-card-title>{{Director.Name}}</mat-card-title>
+            <img mat-card-avatar src={{Director.ImagePath}} alt={{Director.ImagePath}} />
+            <mat-card-subtitle>
+                {{Director.BirthYear | date: 'yyyy'}} - {{Director.DeathYear | date: 'yyyy'}}
+            </mat-card-subtitle>
         </mat-card-header>
-        <!-- <img src={{data.Director.ImagePath}} alt={{data.Director.ImagePath}} />
-        <p>{{data.Director.Bio}}</p> -->
+
+        <p>{{Director.Bio}}</p>
     </mat-card>
 </div>

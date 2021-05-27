@@ -1,29 +1,36 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Profile</mat-card-title>
-    </mat-card-header>
+<div>
+    <app-navbar></app-navbar>
+    <div style="display: flex; justify-content: center;">
+        <mat-card style="margin-top: 1rem; padding: 1rem;">
+            <mat-card-header style="display: block;">
+                <mat-card-title style="text-align: center;">Profile</mat-card-title>
+            </mat-card-header>
 
-    <mat-card-content>
-        <form>
-            <mat-form-field>
-                Username: {{user.Username}}
-            </mat-form-field>
-            <mat-form-field>
-                Email: {{user.Email}}
-            </mat-form-field>
-            <mat-form-field>
-                Date of Birth: {{ user.DateOfBirth | date: 'dd/mm/yyyy'}}
-            </mat-form-field>
-        </form>
-    </mat-card-content>
+            <mat-card-content>
+                <mat-card-subtitle>
+                    Username: {{user.Username}}
+                </mat-card-subtitle>
+                <mat-card-subtitle>
+                    Email: {{user.Email}}
+                </mat-card-subtitle>
+                <mat-card-subtitle>
+                    Date of Birth: {{ user.DateOfBirth | date: 'dd/MM/yyyy'}}
+                </mat-card-subtitle>
+            </mat-card-content>
 
-    <mat-card-actions>
-        <button mat-raised-button (click)="openUserProfileEditDialog()" color="primary">
-            Update profile
-        </button>
-
-        <button mat-raised-button (click)="openUserPasswordEditDialog()" color="primary">
-            Update password
-        </button>
-    </mat-card-actions>
-</mat-card>
+            <mat-card-actions style="padding: 1rem;">
+                <div>
+                    <button mat-raised-button (click)=" openUserProfileEditDialog()" color="primary"
+                        style="margin-bottom: 0.5rem;">
+                        Update profile
+                    </button>
+                </div>
+                <div>
+                    <button mat-raised-button (click)="openUserPasswordEditDialog()" color="primary">
+                        Update password
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
