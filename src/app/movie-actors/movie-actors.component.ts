@@ -8,6 +8,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class MovieActorsComponent {
 
+  /**
+   * Injects actors array from movie-card object for use in movie-actors component
+   * Maps over array to display all relevant details from each object
+   * @param data - array of objects
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {

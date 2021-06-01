@@ -23,13 +23,12 @@ export class UserRegistrationFormComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // sends form inputs to DB
+  /**
+   * Function sending user registration form input to database to create new user account
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(response => {
-      // logic for successful user registration - TODO
-
-      // closes dialog box after registration
-      this.dialogRef.close();
+      this.dialogRef.close();   // closes dialog box after registration
       console.log(response);
       this.snackBar.open('user registered successfully', 'OK', {
         duration: 2000

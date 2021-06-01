@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  /**
+   * Function clearing user ID and bearer token from localStorage, logging user out of app
+   */
   logoutUser(): void {
     localStorage.clear();
   }
