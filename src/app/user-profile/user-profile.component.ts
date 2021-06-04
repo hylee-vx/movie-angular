@@ -47,14 +47,7 @@ export class UserProfileComponent implements OnInit {
   getUser(): void {
     this.fetchApiData.getUser().subscribe((response: any) => {
       this.user = response;
-      let favMoviesUnsorted: any = [];
-      this.movies.forEach((movie: any) => {
-        if (this.user.FavouriteMovies.includes(movie._id)) {
-          favMoviesUnsorted.push(movie);
-          this.favouriteMovies = new Set(favMoviesUnsorted);
-        }
-        return this.favouriteMovies;
-      });
+      this.favouriteMovies = this.movies.filter((movie: any) => this.user.FavouriteMovies.includes(movie._id));
       console.log(this.user);
       console.log(this.favouriteMovies);
       return this.user, this.favouriteMovies;
@@ -71,6 +64,9 @@ export class UserProfileComponent implements OnInit {
   openUserProfileEditDialog(): void {
     this.dialog.open(UserProfileEditComponent, {
       width: '280px',
+      data: {
+        onSuccess: () => this.getUser(),
+      }
     });
   }
 

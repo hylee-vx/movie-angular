@@ -254,7 +254,7 @@ export class DeleteUserService {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .delete(`${apiUrl}users/${user}/delete`, {
+      .delete(`${apiUrl}users/${user}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
