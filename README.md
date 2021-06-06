@@ -1,4 +1,10 @@
-# MovieAngular
+# myMusicalFlix - Angular client
+
+A single page Angular application connected to the [myMusicalFlix_api](https://github.com/hylee-vx/myMusicalFlix_api) backend. Users can create a user account and get information about musicals, including a movie description, genre description and data about the actors and directors involved. Users can modify their account details, add and delete movies from their favourite movies list, and delete their account.
+
+The application is built with the MEAN technology stack (MongoDB, Angular, Express.js, Node.js) and uses Angular Material for its UI components.
+
+## Angular details
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
