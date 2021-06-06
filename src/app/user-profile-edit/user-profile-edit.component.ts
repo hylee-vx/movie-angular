@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GetUserService, EditUserService } from '../fetch-api-data.service';
@@ -13,6 +14,8 @@ export class UserProfileEditComponent implements OnInit {
   user: any = {};
 
   constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: { onSuccess: () => void },
     public fetchApiData: GetUserService,
     public fetchApiData2: EditUserService,
     public dialogRef: MatDialogRef<UserProfileEditComponent>,
@@ -22,15 +25,8 @@ export class UserProfileEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // getUser(): void {
-  //   this.fetchApiData.getUser().subscribe((response: any) => {
-  //     this.user = response;
-  //     return this.user;
-  //   });
-  // }
-
   /**
-   * Function sending user profile form input to database to update user account details 
+   * Function sending user profile form input to database to update user account details, then updates user profile in app
    */
   editUser(): void {
     this.fetchApiData2.editUser(this.userData).subscribe(() => {
@@ -38,7 +34,7 @@ export class UserProfileEditComponent implements OnInit {
       this.snackBar.open('Profile updated!', 'OK', {
         duration: 2000,
       });
-      // this.getUser();
+      this.data.onSuccess();
     }, response => {
       this.snackBar.open(response, 'OK', {
         duration: 2000,

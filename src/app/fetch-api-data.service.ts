@@ -284,7 +284,8 @@ export class DeleteUserService {
       .delete(`${apiUrl}users/${user}/delete`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
-        })
+        }),
+        responseType: 'text',
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }

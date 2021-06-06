@@ -90,6 +90,9 @@ export class UserProfileComponent implements OnInit {
   openUserProfileEditDialog(): void {
     this.dialog.open(UserProfileEditComponent, {
       width: '280px',
+      data: {
+        onSuccess: () => this.getUser(),
+      }
     });
   }
 

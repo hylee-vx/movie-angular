@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { DeleteUserService } from '../fetch-api-data.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class UserProfileDeleteComponent implements OnInit {
     public fetchApiData: DeleteUserService,
     public dialogRef: MatDialogRef<UserProfileDeleteComponent>,
     public snackBar: MatSnackBar,
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -25,10 +27,11 @@ export class UserProfileDeleteComponent implements OnInit {
   deleteUser(): void {
     this.fetchApiData.deleteUser().subscribe(() => {
       this.dialogRef.close();
+      localStorage.clear();
       this.snackBar.open('Account deleted', 'OK', {
         duration: 2000
       });
-      localStorage.clear();
+      this.router.navigate(['welcome']);
     }, response => {
       this.snackBar.open(response, 'OK', {
         duration: 2000
