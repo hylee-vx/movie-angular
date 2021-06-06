@@ -254,10 +254,11 @@ export class DeleteUserService {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .delete(`${apiUrl}users/${user}`, {
+      .delete(`${apiUrl}users/${user}/delete`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
-        })
+        }),
+        responseType: 'arraybuffer',
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
