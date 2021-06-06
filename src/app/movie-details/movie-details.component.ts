@@ -8,6 +8,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class MovieDetailsComponent {
 
+  /**
+ * Injects movie title, release year and description from movie-card component for use in movie-details component dialog
+ * @param data - object 
+ */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
