@@ -4,6 +4,7 @@ A single page Angular application connected to the [myMusicalFlix_api](https://g
 
 The application is built with the MEAN technology stack (MongoDB, Angular, Express.js, Node.js) and uses Angular Material for its UI components.
 
+The application is deployed [here](https://hylee-vx.github.io/myMusicalFlix_angular/).
 ## Angular details
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
